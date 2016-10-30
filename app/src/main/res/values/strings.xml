@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Covai TV</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Consultation-->
+    <string name="register_title">Register Event</string>
+
+    <string-array name="event_type">
+        <item>Select Your Event</item>
+        <item>Event 1</item>
+        <item>Event 2</item>
+    </string-array>
+</resources>
