@@ -9,9 +9,9 @@
     <!-- Consultation-->
     <string name="register_title">Register Event</string>
 
-    <string-array name="event_type">
+    <string-array name="events_type">
         <item>Select Your Event</item>
-        <item>Event 1</item>
-        <item>Event 2</item>
+        <item>Little Super Star</item>
+        <item>Tamil Pechu</item>
     </string-array>
 </resources>

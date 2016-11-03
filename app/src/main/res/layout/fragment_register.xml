@@ -75,6 +75,7 @@
             <Spinner
                 android:id="@+id/eventselectspinner"
                 android:layout_width="match_parent"
+                style="@style/spinner_style"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editText_email"
                 android:layout_marginBottom="@dimen/mainmargin"
