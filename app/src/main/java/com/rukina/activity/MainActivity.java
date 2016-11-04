@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.rukina.R;
+import com.rukina.fragment.ComingSoonFragment;
 import com.rukina.fragment.RegisterEventFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -91,15 +92,39 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_register_event) {
             // Handle the camera action
+            Fragment fragment = new RegisterEventFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
         } else if (id == R.id.nav_gallery) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
 
         } else if (id == R.id.nav_tvshow) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
 
         } else if (id == R.id.nav_settings) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
 
         } else if (id == R.id.nav_share) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
 
         } else if (id == R.id.nav_send) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
 
         }
 
