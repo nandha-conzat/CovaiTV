@@ -18,9 +18,10 @@ import android.view.MenuItem;
 import com.rukina.R;
 import com.rukina.fragment.ComingSoonFragment;
 import com.rukina.fragment.RegisterEventFragment;
+import com.rukina.interfaces.DialogClickListener;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DialogClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,5 +139,15 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.flContent, fragment);
         ft.commit();
+    }
+
+    @Override
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
+
     }
 }
