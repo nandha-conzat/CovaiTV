@@ -96,7 +96,7 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
             eventServiceHelper.makeGetEventServiceCall(String.format(CovaiTVConstants.EVENT_REGISTRATION_URL, regName, regMobileNo,
                     regEmailId, eventType, regAddress));
             // AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Registration done succesfully");
-            clear();
+
 
             return null;
         }
@@ -132,6 +132,7 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
             public void run() {
                 progressDialogHelper.hideProgressDialog();
                 AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Registration done succesfully");
+                clear();
             }
         });
     }
