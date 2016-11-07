@@ -98,8 +98,6 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
         protected Void doInBackground(String... urls) {
             eventServiceHelper.makeGetEventServiceCall(String.format(CovaiTVConstants.EVENT_REGISTRATION_URL, regName, regMobileNo,
                     regEmailId, eventType, regAddress));
-            // AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Registration done succesfully");
-
 
             return null;
         }
@@ -117,7 +115,6 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
         etxMobileNo.setText("");
         etxEmailId.setText("");
         extAddress.setText("");
-        ;
     }
 
     protected void initializeEventHelpers() {
@@ -134,8 +131,8 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
             @Override
             public void run() {
                 progressDialogHelper.hideProgressDialog();
-                AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Thank you "+regName+", your message has been submitted and someone will contact you shortly.");
                 clear();
+                AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Thank you " + regName + ", your message has been submitted and someone will contact you shortly.");
             }
         });
     }
@@ -156,28 +153,26 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
         if (!CovaiTVValidator.checkNullString(this.etxName.getText().toString().trim())) {
             AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_name));
             return false;
+        } else if (!CovaiTVValidator.checkNullString(this.etxMobileNo.getText().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_mobile));
+            return false;
         } else if (!CovaiTVValidator.checkNullString(this.etxEmailId.getText().toString().trim())) {
             AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.email_empty_str));
             return false;
         } else if (!CovaiTVValidator.isEmailValid(this.etxEmailId.getText().toString().trim())) {
             AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_valid_email));
             return false;
-        } else if (!CovaiTVValidator.checkNullString(this.etxMobileNo.getText().toString())) {
-            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_mobile));
+        } else if (!CovaiTVValidator.checkSpinnerString(this.spnEvents.getSelectedItem().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.select_event));
             return false;
         } else if (!CovaiTVValidator.checkNullString(this.extAddress.getText().toString())) {
             AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_address));
             return false;
-        } else if (!CovaiTVValidator.checkSpinnerString(this.spnEvents.getSelectedItem().toString())) {
-            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.select_event));
-            return false;
-        }/* else if (!CovaiTVValidator.withinPermittedLength(this.edtPassword.getText().toString())) {
+        } /* else if (!CovaiTVValidator.withinPermittedLength(this.edtPassword.getText().toString())) {
             AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Password length should be greater than 6 characters");
             return false;
-        } */
-        else {
+        } */ else {
             return true;
         }
-
     }
 }
