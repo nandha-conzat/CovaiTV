@@ -45,6 +45,7 @@ public class EventServiceHelper {
 
     public void makeGetEventServiceCall(String URL) {
         Log.d(TAG, "Events URL" + URL);
+        URL = URL.replaceAll(" ","%20");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
                 URL, (String) null,
                 new com.android.volley.Response.Listener<JSONObject>() {

@@ -26,6 +26,7 @@ import com.rukina.serviceshelper.EventServiceHelper;
 import com.rukina.serviceshelper.SignUpServiceHelper;
 import com.rukina.utils.CommonUtils;
 import com.rukina.utils.CovaiTVConstants;
+import com.rukina.utils.CovaiTVValidator;
 
 import org.json.JSONObject;
 
@@ -78,12 +79,14 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
                 regEmailId = etxEmailId.getText().toString();
                 regAddress = extAddress.getText().toString();
 
-                if (CommonUtils.isNetworkAvailable(getActivity())) {
-                    progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-                    //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
-                    new HttpAsyncTask().execute("");
-                } else {
-                    AlertDialogHelper.showSimpleAlertDialog(getActivity(), getString(R.string.no_connectivity));
+                if (validateFields()) {
+                    if (CommonUtils.isNetworkAvailable(getActivity())) {
+                        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+                        //    eventServiceHelper.makeRawRequest(FindAFunConstants.GET_ADVANCE_SINGLE_SEARCH);
+                        new HttpAsyncTask().execute("");
+                    } else {
+                        AlertDialogHelper.showSimpleAlertDialog(getActivity(), getString(R.string.no_connectivity));
+                    }
                 }
             }
         });
@@ -131,7 +134,7 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
             @Override
             public void run() {
                 progressDialogHelper.hideProgressDialog();
-                AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Registration done succesfully");
+                AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Thank you "+regName+", your message has been submitted and someone will contact you shortly.");
                 clear();
             }
         });
@@ -146,5 +149,35 @@ public class RegisterEventFragment extends Fragment implements IEventServiceList
                 AlertDialogHelper.showSimpleAlertDialog(getActivity(), error);
             }
         });
+    }
+
+    private boolean validateFields() {
+
+        if (!CovaiTVValidator.checkNullString(this.etxName.getText().toString().trim())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_name));
+            return false;
+        } else if (!CovaiTVValidator.checkNullString(this.etxEmailId.getText().toString().trim())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.email_empty_str));
+            return false;
+        } else if (!CovaiTVValidator.isEmailValid(this.etxEmailId.getText().toString().trim())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_valid_email));
+            return false;
+        } else if (!CovaiTVValidator.checkNullString(this.etxMobileNo.getText().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_mobile));
+            return false;
+        } else if (!CovaiTVValidator.checkNullString(this.extAddress.getText().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.enter_address));
+            return false;
+        } else if (!CovaiTVValidator.checkSpinnerString(this.spnEvents.getSelectedItem().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), this.getResources().getString(R.string.select_event));
+            return false;
+        }/* else if (!CovaiTVValidator.withinPermittedLength(this.edtPassword.getText().toString())) {
+            AlertDialogHelper.showSimpleAlertDialog(getActivity(), "Password length should be greater than 6 characters");
+            return false;
+        } */
+        else {
+            return true;
+        }
+
     }
 }
