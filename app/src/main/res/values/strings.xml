@@ -16,8 +16,15 @@
     <string name="no_connectivity">Please check your internet connectivity and try again.</string>
 
     <string-array name="events_type">
-        <item>Select Your Event</item>
+        <item>Please Select</item>
         <item>Little Super Star</item>
         <item>Tamil Pechu</item>
     </string-array>
+
+    <string name="enter_name">Name cannot be empty</string>
+    <string name="email_empty_str">Email Id cannot be empty</string>
+    <string name="enter_valid_email">Please enter a valid email address</string>
+    <string name="enter_mobile">Mobile number cannot be empty</string>
+    <string name="enter_address">Address cannot be empty</string>
+    <string name="select_event">Select your event</string>
 </resources>
