@@ -15,6 +15,14 @@
 
             android:title="TV Shows" />
         <item
+            android:id="@+id/nav_news"
+
+            android:title="News" />
+        <item
+            android:id="@+id/nav_magazine"
+
+            android:title="Magazine" />
+        <item
             android:id="@+id/nav_settings"
 
             android:title="Settings" />

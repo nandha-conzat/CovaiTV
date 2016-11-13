@@ -109,6 +109,18 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.flContent, fragment);
             ft.commit();
 
+        } else if (id == R.id.nav_news) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
+
+        } else if (id == R.id.nav_magazine) {
+            Fragment fragment = new ComingSoonFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
+
         } else if (id == R.id.nav_settings) {
             Fragment fragment = new ComingSoonFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
